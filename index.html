@@ -1,98 +1,445 @@
+```html
 <!DOCTYPE html>
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Преміальний детейлінг та захист авто Київ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap">
     <style>
         body {
-            background-color: #090a0f;
-            color: #f1f5f9;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Manrope', sans-serif;
+            background-color: #050608;
+            color: #f8fafc;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            backdrop-filter: blur(10px);
+            background-color: rgba(0, 0, 0, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        header .logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+        }
+        header nav a {
+            margin: 0 10px;
+            color: #f8fafc;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        header .contact-buttons a {
+            margin-left: 10px;
+            padding: 8px 16px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        header .contact-buttons a.tel {
+            background-color: #3b82f6;
+            color: #fff;
+        }
+        header .contact-buttons a.telegram {
+            background-color: #0d0f14;
+            color: #3b82f6;
+            border: 1px solid #3b82f6;
+        }
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 100px 20px 40px;
+        }
+        .hero .left {
+            max-width: 50%;
+        }
+        .hero .left h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 48px;
+            font-weight: 800;
+            margin: 0 0 20px;
+        }
+        .hero .left .badge {
+            background-color: #3b82f6;
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .hero .left .buttons a {
+            display: inline-block;
+            margin-right: 10px;
+            padding: 10px 20px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .hero .left .buttons a.primary {
+            background-color: #3b82f6;
+            color: #fff;
+        }
+        .hero .left .buttons a.secondary {
+            background-color: #0d0f14;
+            color: #3b82f6;
+            border: 1px solid #3b82f6;
+        }
+        .hero .right {
+            position: relative;
+        }
+        .hero .right img {
+            width: 100%;
+            height: auto;
+            border-radius: 24px;
+        }
+        .hero .right .floating-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #3b82f6;
+            padding: 5px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+        .services {
+            padding: 60px 20px;
+        }
+        .services .service-card {
+            background-color: #0d0f14;
+            border: 1px solid #4b5563;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+        .services .service-card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        .services .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .services .service-card .content {
+            padding: 20px;
+        }
+        .services .service-card .content h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 0 10px;
+        }
+        .services .service-card .content ul {
+            list-style: none;
+            padding: 0;
+        }
+        .services .service-card .content ul li {
+            margin: 5px 0;
+        }
+        .services .service-card .content .price {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        .services .service-card .content .order-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3b82f6;
+            color: #fff;
+            border-radius: 24px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .steps {
+            padding: 60px 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .steps .step {
+            text-align: center;
+            max-width: 24%;
+        }
+        .steps .step .number {
+            font-family: 'Syne', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            color: #3b82f6;
+        }
+        .steps .step p {
+            margin: 10px 0 0;
+        }
+        .pricing {
+            padding: 60px 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .pricing .pricing-card {
+            background-color: #0d0f14;
+            border: 1px solid #4b5563;
+            border-radius: 24px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+            max-width: 32%;
+        }
+        .pricing .pricing-card:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        .pricing .pricing-card .content {
+            padding: 20px;
+        }
+        .pricing .pricing-card .content h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0 0 10px;
+        }
+        .pricing .pricing-card .content .price {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        .pricing .pricing-card .content .features {
+            list-style: none;
+            padding: 0;
+        }
+        .pricing .pricing-card .content .features li {
+            margin: 5px 0;
+        }
+        .pricing .pricing-card .content .order-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3b82f6;
+            color: #fff;
+            border-radius: 24px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .faq {
+            padding: 60px 20px;
+        }
+        .faq .question {
+            cursor: pointer;
+            padding: 10px 20px;
+            background-color: #0d0f14;
+            border: 1px solid #4b5563;
+            border-radius: 24px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+        }
+        .faq .question:hover {
+            background-color: #1f2937;
+        }
+        .faq .answer {
+            display: none;
+            padding: 10px 20px;
+            background-color: #1f2937;
+            border-radius: 24px;
+            margin-bottom: 10px;
+        }
+        .contact {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .contact .address,
+        .contact .hours {
+            margin: 10px 0;
+        }
+        .contact .telegram-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3b82f6;
+            color: #fff;
+            border-radius: 24px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #0d0f14;
+            border-top: 1px solid #4b5563;
         }
     </style>
 </head>
-<body class="bg-[#090a0f] text-[#f1f5f9]">
+<body>
+    <header>
+        <div class="logo">АвтоДетейл</div>
+        <nav>
+            <a href="#services">Послуги</a>
+            <a href="#pricing">Тарифи</a>
+            <a href="#steps">Етапи</a>
+            <a href="#faq">FAQ</a>
+        </nav>
+        <div class="contact-buttons">
+            <a href="tel:+380671234567" class="tel">📞 +380671234567</a>
+            <a href="https://t.me/pavlograd_admin" class="telegram">Telegram</a>
+        </div>
+    </header>
 
-    <!-- Hero Section -->
-    <section class="min-h-screen flex flex-col justify-center items-center text-center">
-        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=85" alt="Преміальний детейлінг" class="w-full h-auto rounded-3xl mb-8">
-        <h1 class="text-4xl font-bold mb-4">Преміальний детейлінг та захист авто</h1>
-        <p class="text-xl mb-6">Київ, Поділ / Оболонь / Печерськ</p>
-        <a href="tel:+380XXXXXXXXX" class="bg-emerald-500 hover:bg-emerald-400 text-black font-bold py-3 px-8 rounded-3xl">Швидкий виклик</a>
+    <section class="hero">
+        <div class="left">
+            <div class="badge">🟢 Працюємо щодня • Київ та область</div>
+            <h1>Преміальний детейлінг та захист авто у Києві</h1>
+            <p>Отримайте бездоганний вигляд вашого авто вже сьогодні!</p>
+            <div class="buttons">
+                <a href="#services" class="primary">Замовити зараз</a>
+                <a href="https://t.me/pavlograd_admin" class="secondary">Зв'язатись у Telegram</a>
+            </div>
+            <p>3,200+ клієнтів • 12 міс гарантії • 4.9/5 рейтинг</p>
+        </div>
+        <div class="right">
+            <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=85" alt="Hero Image" onerror="this.style.display='none'" class="w-full h-48 object-cover rounded-2xl mb-4" loading="lazy">
+            <div class="floating-badge">Експертний підхід</div>
+        </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="py-20">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-semibold mb-10 text-center">Наші Послуги</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-[#11131a] border border-white/10 hover:border-emerald-500/40 transition-all rounded-3xl p-6">
-                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Детейлінг" class="rounded-3xl mb-4">
-                    <h3 class="text-2xl font-bold mb-2">Базовий огляд</h3>
-                    <p class="mb-4">Діагностика за 15 хв</p>
-                    <p class="font-bold">1 500 ₴</p>
-                </div>
-                <div class="bg-[#11131a] border border-white/10 hover:border-emerald-500/40 transition-all rounded-3xl p-6">
-                    <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80" alt="Захист авто" class="rounded-3xl mb-4">
-                    <h3 class="text-2xl font-bold mb-2">Комплексний захист</h3>
-                    <p class="mb-4">Запуск під ключ за 24 години</p>
-                    <p class="font-bold">3 800 ₴</p>
-                </div>
-                <div class="bg-[#11131a] border border-white/10 hover:border-emerald-500/40 transition-all rounded-3xl p-6">
-                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Детейлінг" class="rounded-3xl mb-4">
-                    <h3 class="text-2xl font-bold mb-2">Преміальний догляд</h3>
-                    <p class="mb-4">Приїзд майстра за 40 хвилин</p>
-                    <p class="font-bold">2 500 ₴</p>
-                </div>
+    <section id="services" class="services">
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=800&q=80" alt="Service 1" onerror="this.style.display='none'" class="w-full h-48 object-cover rounded-2xl mb-4" loading="lazy">
+            <div class="content">
+                <h3>Детейлінг екстер'єру</h3>
+                <ul>
+                    <li>✓ Мийка кузова</li>
+                    <li>✓ Полірування</li>
+                    <li>✓ Захист воском</li>
+                </ul>
+                <div class="price">1 800 ₴</div>
+                <a href="#" class="order-btn">Замовити</a>
+            </div>
+        </div>
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=80" alt="Service 2" onerror="this.style.display='none'" class="w-full h-48 object-cover rounded-2xl mb-4" loading="lazy">
+            <div class="content">
+                <h3>Детейлінг інтер'єру</h3>
+                <ul>
+                    <li>✓ Хімчистка салону</li>
+                    <li>✓ Обробка шкіри</li>
+                    <li>✓ Дезінфекція</li>
+                </ul>
+                <div class="price">3 500 ₴</div>
+                <a href="#" class="order-btn">Замовити</a>
+            </div>
+        </div>
+        <div class="service-card">
+            <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80" alt="Service 3" onerror="this.style.display='none'" class="w-full h-48 object-cover rounded-2xl mb-4" loading="lazy">
+            <div class="content">
+                <h3>Захист кузова</h3>
+                <ul>
+                    <li>✓ Нанокераміка</li>
+                    <li>✓ Антигравійна плівка</li>
+                    <li>✓ Захист фар</li>
+                </ul>
+                <div class="price">6 200 ₴</div>
+                <a href="#" class="order-btn">Замовити</a>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="py-20 bg-[#11131a]">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-semibold mb-10 text-center">Часті Запитання</h2>
-            <div id="faq" class="space-y-4">
-                <div class="border-b border-white/10 pb-4">
-                    <button class="w-full text-left text-xl font-medium" onclick="toggleFaq(1)">Що входить у базовий огляд?</button>
-                    <div id="faq1" class="hidden mt-2">
-                        <p>Базовий огляд включає в себе повну діагностику авто з рекомендаціями щодо подальших дій.</p>
-                    </div>
-                </div>
-                <div class="border-b border-white/10 pb-4">
-                    <button class="w-full text-left text-xl font-medium" onclick="toggleFaq(2)">Як швидко ми можемо приїхати?</button>
-                    <div id="faq2" class="hidden mt-2">
-                        <p>Наш майстер приїде до вас за 40 хвилин після оформлення заявки.</p>
-                    </div>
-                </div>
-                <div class="border-b border-white/10 pb-4">
-                    <button class="w-full text-left text-xl font-medium" onclick="toggleFaq(3)">Які гарантії ви надаєте?</button>
-                    <div id="faq3" class="hidden mt-2">
-                        <p>Ми надаємо чіткі гарантії з підписом у договорі, щоб ви були впевнені у якості наших послуг.</p>
-                    </div>
-                </div>
+    <section id="steps" class="steps">
+        <div class="step">
+            <div class="number">01</div>
+            <p>Заявка та оцінка</p>
+        </div>
+        <div class="step">
+            <div class="number">02</div>
+            <p>Виїзд майстра (до 40 хв)</p>
+        </div>
+        <div class="step">
+            <div class="number">03</div>
+            <p>Виконання за регламентом</p>
+        </div>
+        <div class="step">
+            <div class="number">04</div>
+            <p>Контроль та оплата після перевірки</p>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="pricing-card">
+            <div class="content">
+                <h3>Базовий</h3>
+                <div class="price">2 000 ₴</div>
+                <ul class="features">
+                    <li>✓ Мийка</li>
+                    <li>✓ Вакуум</li>
+                </ul>
+                <a href="#" class="order-btn">Замовити</a>
+            </div>
+        </div>
+        <div class="pricing-card">
+            <div class="content">
+                <h3>Оптимальний [ХІТ]</h3>
+                <div class="price">4 500 ₴</div>
+                <ul class="features">
+                    <li>✓ Мийка</li>
+                    <li>✓ Полірування</li>
+                    <li>✓ Хімчистка</li>
+                </ul>
+                <a href="#" class="order-btn">Замовити</a>
+            </div>
+        </div>
+        <div class="pricing-card">
+            <div class="content">
+                <h3>VIP</h3>
+                <div class="price">8 000 ₴</div>
+                <ul class="features">
+                    <li>✓ Повний детейлінг</li>
+                    <li>✓ Захист кузова</li>
+                    <li>✓ Обробка шкіри</li>
+                </ul>
+                <a href="#" class="order-btn">Замовити</a>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="py-20">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-semibold mb-10">Зв'яжіться з нами</h2>
-            <a href="https://t.me/pavlograd_admin" class="bg-emerald-500 hover:bg-emerald-400 text-black font-bold py-3 px-8 rounded-3xl">Замовити через Telegram</a>
+    <section id="faq" class="faq">
+        <div class="question" onclick="toggleAnswer(this)">
+            <h4>Які матеріали ви використовуєте?</h4>
+        </div>
+        <div class="answer">
+            <p>Ми використовуємо тільки високоякісні матеріали від провідних виробників.</p>
+        </div>
+        <div class="question" onclick="toggleAnswer(this)">
+            <h4>Чи надаєте ви гарантію на послуги?</h4>
+        </div>
+        <div class="answer">
+            <p>Так, ми надаємо 12 місяців гарантії на всі наші послуги.</p>
+        </div>
+        <div class="question" onclick="toggleAnswer(this)">
+            <h4>Скільки часу займає процес детейлінгу?</h4>
+        </div>
+        <div class="answer">
+            <p>Зазвичай, процес займає від 2 до 5 годин, залежно від обраного пакету.</p>
+        </div>
+        <div class="question" onclick="toggleAnswer(this)">
+            <h4>Чи можу я замовити послугу на вихідні?</h4>
+        </div>
+        <div class="answer">
+            <p>Так, ми працюємо щодня, включаючи вихідні.</p>
         </div>
     </section>
+
+    <section class="contact">
+        <div class="address">Київ, вул. Велика Васильківська, 102</div>
+        <div class="hours">Пн–Нд 08:30 – 21:00</div>
+        <a href="https://t.me/pavlograd_admin" class="telegram-btn">Зв'язатись з менеджером</a>
+    </section>
+
+    <footer>
+        <p>Копірайт 2026, безпека даних, всі права захищено.</p>
+    </footer>
 
     <script>
-        function toggleFaq(id) {
-            const faq = document.getElementById('faq' + id);
-            faq.classList.toggle('hidden');
-        }
-    </script>
-    <script>lucide.createIcons();</script>
-</body>
-</html>
+        function toggleAnswer(element) {
+            const answer = element.nextElementSibling;
+            if (answer.style.display === 'block') {
+                answer
