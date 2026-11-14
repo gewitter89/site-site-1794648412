@@ -1,445 +1,652 @@
-```html
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Преміальний детейлінг та захист авто Київ</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap">
+    <title>APEX Detailing Kyiv — Преміальний детейлінг та нанокерамічний захист авто</title>
+    <meta name="description" content="Професійне відновлення та захист кузова у Києві. Нанокераміка 9H, антигравійна бронеплівка, трифазна мийка та делікатна хімчистка салону.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        display: ['Syne', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: {
+                            900: '#07080b',
+                            800: '#0f1117',
+                            700: '#171a23',
+                            600: '#232736',
+                        },
+                        brand: {
+                            primary: '#3b82f6',
+                            emerald: '#10b981',
+                            amber: '#f59e0b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         body {
-            font-family: 'Manrope', sans-serif;
-            background-color: #050608;
-            color: #f8fafc;
-            margin: 0;
-            padding: 0;
+            background-color: #07080b;
+            color: #f1f5f9;
         }
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            backdrop-filter: blur(10px);
-            background-color: rgba(0, 0, 0, 0.7);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
+        .glass-panel {
+            background: rgba(15, 17, 23, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
-        header .logo {
-            font-family: 'Syne', sans-serif;
-            font-size: 24px;
-            font-weight: 800;
+        .glass-panel:hover {
+            border-color: rgba(59, 130, 246, 0.35);
         }
-        header nav a {
-            margin: 0 10px;
-            color: #f8fafc;
-            text-decoration: none;
-            font-weight: 600;
+        .glow-button {
+            box-shadow: 0 0 25px -5px rgba(59, 130, 246, 0.4);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        header .contact-buttons a {
-            margin-left: 10px;
-            padding: 8px 16px;
-            border-radius: 24px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        header .contact-buttons a.tel {
-            background-color: #3b82f6;
-            color: #fff;
-        }
-        header .contact-buttons a.telegram {
-            background-color: #0d0f14;
-            color: #3b82f6;
-            border: 1px solid #3b82f6;
-        }
-        .hero {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 100px 20px 40px;
-        }
-        .hero .left {
-            max-width: 50%;
-        }
-        .hero .left h1 {
-            font-family: 'Syne', sans-serif;
-            font-size: 48px;
-            font-weight: 800;
-            margin: 0 0 20px;
-        }
-        .hero .left .badge {
-            background-color: #3b82f6;
-            padding: 5px 10px;
-            border-radius: 12px;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-        .hero .left .buttons a {
-            display: inline-block;
-            margin-right: 10px;
-            padding: 10px 20px;
-            border-radius: 24px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .hero .left .buttons a.primary {
-            background-color: #3b82f6;
-            color: #fff;
-        }
-        .hero .left .buttons a.secondary {
-            background-color: #0d0f14;
-            color: #3b82f6;
-            border: 1px solid #3b82f6;
-        }
-        .hero .right {
-            position: relative;
-        }
-        .hero .right img {
-            width: 100%;
-            height: auto;
-            border-radius: 24px;
-        }
-        .hero .right .floating-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: #3b82f6;
-            padding: 5px 10px;
-            border-radius: 12px;
-            font-weight: 600;
-        }
-        .services {
-            padding: 60px 20px;
-        }
-        .services .service-card {
-            background-color: #0d0f14;
-            border: 1px solid #4b5563;
-            border-radius: 24px;
-            overflow: hidden;
-            transition: border-color 0.3s;
-        }
-        .services .service-card:hover {
-            border-color: rgba(59, 130, 246, 0.4);
-        }
-        .services .service-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .services .service-card .content {
-            padding: 20px;
-        }
-        .services .service-card .content h3 {
-            font-family: 'Syne', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            margin: 0 0 10px;
-        }
-        .services .service-card .content ul {
-            list-style: none;
-            padding: 0;
-        }
-        .services .service-card .content ul li {
-            margin: 5px 0;
-        }
-        .services .service-card .content .price {
-            font-size: 20px;
-            font-weight: 700;
-            margin: 10px 0;
-        }
-        .services .service-card .content .order-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #3b82f6;
-            color: #fff;
-            border-radius: 24px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .steps {
-            padding: 60px 20px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .steps .step {
-            text-align: center;
-            max-width: 24%;
-        }
-        .steps .step .number {
-            font-family: 'Syne', sans-serif;
-            font-size: 36px;
-            font-weight: 800;
-            color: #3b82f6;
-        }
-        .steps .step p {
-            margin: 10px 0 0;
-        }
-        .pricing {
-            padding: 60px 20px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .pricing .pricing-card {
-            background-color: #0d0f14;
-            border: 1px solid #4b5563;
-            border-radius: 24px;
-            overflow: hidden;
-            transition: border-color 0.3s;
-            max-width: 32%;
-        }
-        .pricing .pricing-card:hover {
-            border-color: rgba(59, 130, 246, 0.4);
-        }
-        .pricing .pricing-card .content {
-            padding: 20px;
-        }
-        .pricing .pricing-card .content h3 {
-            font-family: 'Syne', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            margin: 0 0 10px;
-        }
-        .pricing .pricing-card .content .price {
-            font-size: 20px;
-            font-weight: 700;
-            margin: 10px 0;
-        }
-        .pricing .pricing-card .content .features {
-            list-style: none;
-            padding: 0;
-        }
-        .pricing .pricing-card .content .features li {
-            margin: 5px 0;
-        }
-        .pricing .pricing-card .content .order-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #3b82f6;
-            color: #fff;
-            border-radius: 24px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .faq {
-            padding: 60px 20px;
-        }
-        .faq .question {
-            cursor: pointer;
-            padding: 10px 20px;
-            background-color: #0d0f14;
-            border: 1px solid #4b5563;
-            border-radius: 24px;
-            margin-bottom: 10px;
-            transition: background-color 0.3s;
-        }
-        .faq .question:hover {
-            background-color: #1f2937;
-        }
-        .faq .answer {
-            display: none;
-            padding: 10px 20px;
-            background-color: #1f2937;
-            border-radius: 24px;
-            margin-bottom: 10px;
-        }
-        .contact {
-            padding: 60px 20px;
-            text-align: center;
-        }
-        .contact .address,
-        .contact .hours {
-            margin: 10px 0;
-        }
-        .contact .telegram-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #3b82f6;
-            color: #fff;
-            border-radius: 24px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        footer {
-            padding: 20px;
-            text-align: center;
-            background-color: #0d0f14;
-            border-top: 1px solid #4b5563;
+        .glow-button:hover {
+            box-shadow: 0 0 35px 2px rgba(59, 130, 246, 0.6);
+            transform: translateY(-2px);
         }
     </style>
 </head>
-<body>
-    <header>
-        <div class="logo">АвтоДетейл</div>
-        <nav>
-            <a href="#services">Послуги</a>
-            <a href="#pricing">Тарифи</a>
-            <a href="#steps">Етапи</a>
-            <a href="#faq">FAQ</a>
-        </nav>
-        <div class="contact-buttons">
-            <a href="tel:+380671234567" class="tel">📞 +380671234567</a>
-            <a href="https://t.me/pavlograd_admin" class="telegram">Telegram</a>
+<body class="font-sans antialiased selection:bg-blue-600 selection:text-white">
+
+    <!-- Top Sticky Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/10 px-4 md:px-8 py-3.5 transition-all">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2.5 text-white font-display text-xl md:text-2xl font-extrabold tracking-tight">
+                <span class="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-blue-500/30">
+                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                </span>
+                <span>APEX<span class="text-blue-500">.</span>KYIV</span>
+            </a>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#services" class="hover:text-blue-400 transition-colors">Послуги</a>
+                <a href="#pricing" class="hover:text-blue-400 transition-colors">Тарифи</a>
+                <a href="#process" class="hover:text-blue-400 transition-colors">Етапи</a>
+                <a href="#guarantee" class="hover:text-blue-400 transition-colors">Гарантія</a>
+                <a href="#faq" class="hover:text-blue-400 transition-colors">FAQ</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3">
+                <a href="tel:+380671234567" class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-slate-200 hover:text-white px-3 py-2 rounded-xl hover:bg-white/5 transition-all">
+                    <i data-lucide="phone-call" class="w-4 h-4 text-emerald-400"></i>
+                    <span>+38 (067) 123-45-67</span>
+                </a>
+                <a href="https://t.me/pavlograd_admin" target="_blank" rel="noopener noreferrer" class="glow-button inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold text-sm px-4 py-2.5 rounded-xl">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                    <span>Запис у Telegram</span>
+                </a>
+            </div>
         </div>
     </header>
 
-    <section class="hero">
-        <div class="left">
-            <div class="badge">🟢 Працюємо щодня • Київ та область</div>
-            <h1>Преміальний детейлінг та захист авто у Києві</h1>
-            <p>Отримайте бездоганний вигляд вашого авто вже сьогодні!</p>
-            <div class="buttons">
-                <a href="#services" class="primary">Замовити зараз</a>
-                <a href="https://t.me/pavlograd_admin" class="secondary">Зв'язатись у Telegram</a>
-            </div>
-            <p>3,200+ клієнтів • 12 міс гарантії • 4.9/5 рейтинг</p>
-        </div>
-        <div class="right">
-            <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=85" alt="Hero Image" onerror="this.style.display='none'" class="w-full h-48 object-cover rounded-2xl mb-4" loading="lazy">
-            <div class="floating-badge">Експертний підхід</div>
-        </div>
-    </section>
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+        <!-- Radial Glow Background -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] bg-blue-600/15 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+        <div class="absolute top-1/3 right-10 w-[400px] h-[300px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none -z-10"></div>
 
-    <section id="services" class="services">
-        <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=800&q=80" alt="Service 1" onerror="this.style.display='none'" class="w-full h-48 object-cover rounded-2xl mb-4" loading="lazy">
-            <div class="content">
-                <h3>Детейлінг екстер'єру</h3>
-                <ul>
-                    <li>✓ Мийка кузова</li>
-                    <li>✓ Полірування</li>
-                    <li>✓ Захист воском</li>
-                </ul>
-                <div class="price">1 800 ₴</div>
-                <a href="#" class="order-btn">Замовити</a>
-            </div>
-        </div>
-        <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=80" alt="Service 2" onerror="this.style.display='none'" class="w-full h-48 object-cover rounded-2xl mb-4" loading="lazy">
-            <div class="content">
-                <h3>Детейлінг інтер'єру</h3>
-                <ul>
-                    <li>✓ Хімчистка салону</li>
-                    <li>✓ Обробка шкіри</li>
-                    <li>✓ Дезінфекція</li>
-                </ul>
-                <div class="price">3 500 ₴</div>
-                <a href="#" class="order-btn">Замовити</a>
-            </div>
-        </div>
-        <div class="service-card">
-            <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80" alt="Service 3" onerror="this.style.display='none'" class="w-full h-48 object-cover rounded-2xl mb-4" loading="lazy">
-            <div class="content">
-                <h3>Захист кузова</h3>
-                <ul>
-                    <li>✓ Нанокераміка</li>
-                    <li>✓ Антигравійна плівка</li>
-                    <li>✓ Захист фар</li>
-                </ul>
-                <div class="price">6 200 ₴</div>
-                <a href="#" class="order-btn">Замовити</a>
-            </div>
-        </div>
-    </section>
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column: Pitch & CTA -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs md:text-sm font-semibold">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        Працюємо щодня • Київ (Печерськ, Поділ, Оболонь)
+                    </div>
 
-    <section id="steps" class="steps">
-        <div class="step">
-            <div class="number">01</div>
-            <p>Заявка та оцінка</p>
-        </div>
-        <div class="step">
-            <div class="number">02</div>
-            <p>Виїзд майстра (до 40 хв)</p>
-        </div>
-        <div class="step">
-            <div class="number">03</div>
-            <p>Виконання за регламентом</p>
-        </div>
-        <div class="step">
-            <div class="number">04</div>
-            <p>Контроль та оплата після перевірки</p>
-        </div>
-    </section>
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl font-display font-extrabold tracking-tight leading-[1.1] text-white">
+                        Преміальний детейлінг та <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-emerald-400 bg-clip-text text-transparent">керамічний захист</span> авто у Києві
+                    </h1>
 
-    <section id="pricing" class="pricing">
-        <div class="pricing-card">
-            <div class="content">
-                <h3>Базовий</h3>
-                <div class="price">2 000 ₴</div>
-                <ul class="features">
-                    <li>✓ Мийка</li>
-                    <li>✓ Вакуум</li>
-                </ul>
-                <a href="#" class="order-btn">Замовити</a>
-            </div>
-        </div>
-        <div class="pricing-card">
-            <div class="content">
-                <h3>Оптимальний [ХІТ]</h3>
-                <div class="price">4 500 ₴</div>
-                <ul class="features">
-                    <li>✓ Мийка</li>
-                    <li>✓ Полірування</li>
-                    <li>✓ Хімчистка</li>
-                </ul>
-                <a href="#" class="order-btn">Замовити</a>
-            </div>
-        </div>
-        <div class="pricing-card">
-            <div class="content">
-                <h3>VIP</h3>
-                <div class="price">8 000 ₴</div>
-                <ul class="features">
-                    <li>✓ Повний детейлінг</li>
-                    <li>✓ Захист кузова</li>
-                    <li>✓ Обробка шкіри</li>
-                </ul>
-                <a href="#" class="order-btn">Замовити</a>
+                    <p class="text-lg md:text-xl text-slate-300 font-normal leading-relaxed max-w-2xl">
+                        Повертаємо автомобілю заводський дзеркальний блиск та захищаємо від сколів, реагентів і подряпин. Німецька хімія <strong class="text-white">Koch Chemie</strong>, японська кераміка <strong class="text-white">9H</strong> та гарантія до 24 місяців.
+                    </p>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+                        <a href="https://t.me/pavlograd_admin?text=Доброго%20дня!%20Хочу%20замовити%20детейлінг%20авто" target="_blank" rel="noopener noreferrer" class="glow-button inline-flex justify-center items-center gap-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold px-7 py-4 rounded-2xl text-base shadow-xl">
+                            <i data-lucide="calendar" class="w-5 h-5"></i>
+                            <span>Забронювати візит зі знижкою 10%</span>
+                        </a>
+                        <a href="#services" class="inline-flex justify-center items-center gap-2 px-6 py-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 font-semibold text-base transition-all">
+                            <span>Переглянути послуги</span>
+                            <i data-lucide="arrow-down" class="w-4 h-4 text-slate-400"></i>
+                        </a>
+                    </div>
+
+                    <!-- Trust Metric Bar -->
+                    <div class="pt-6 grid grid-cols-3 gap-4 border-t border-white/10">
+                        <div>
+                            <div class="text-2xl md:text-3xl font-display font-extrabold text-white">3 450+</div>
+                            <div class="text-xs md:text-sm text-slate-400">Обслугованих авто</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl md:text-3xl font-display font-extrabold text-white">4.9 / 5.0</div>
+                            <div class="text-xs md:text-sm text-slate-400">Рейтинг задоволеності</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl md:text-3xl font-display font-extrabold text-emerald-400">24 міс.</div>
+                            <div class="text-xs md:text-sm text-slate-400">Офіційна гарантія</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Visual Showcase -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative rounded-3xl overflow-hidden border border-white/15 shadow-2xl group">
+                        <img 
+                            src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=85" 
+                            alt="Porsche 911 GT Detailing Kyiv" 
+                            class="w-full h-[440px] object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                            loading="eager"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        
+                        <!-- Floating Glass Badge Top -->
+                        <div class="absolute top-4 right-4 glass-panel px-3.5 py-1.5 rounded-full flex items-center gap-2 border border-white/20 text-xs font-semibold text-white shadow-xl">
+                            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-400"></i>
+                            <span>Студійний бокс закритого типу</span>
+                        </div>
+
+                        <!-- Bottom Card Highlight -->
+                        <div class="absolute bottom-4 left-4 right-4 glass-panel p-4 rounded-2xl border border-white/15">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <div class="text-xs text-blue-400 font-semibold uppercase tracking-wider">Флагманська послуга</div>
+                                    <div class="text-sm md:text-base font-bold text-white">Нанокераміка 9H + Глибоке полірування</div>
+                                </div>
+                                <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1.5 rounded-xl">від 4 800 ₴</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <section id="faq" class="faq">
-        <div class="question" onclick="toggleAnswer(this)">
-            <h4>Які матеріали ви використовуєте?</h4>
-        </div>
-        <div class="answer">
-            <p>Ми використовуємо тільки високоякісні матеріали від провідних виробників.</p>
-        </div>
-        <div class="question" onclick="toggleAnswer(this)">
-            <h4>Чи надаєте ви гарантію на послуги?</h4>
-        </div>
-        <div class="answer">
-            <p>Так, ми надаємо 12 місяців гарантії на всі наші послуги.</p>
-        </div>
-        <div class="question" onclick="toggleAnswer(this)">
-            <h4>Скільки часу займає процес детейлінгу?</h4>
-        </div>
-        <div class="answer">
-            <p>Зазвичай, процес займає від 2 до 5 годин, залежно від обраного пакету.</p>
-        </div>
-        <div class="question" onclick="toggleAnswer(this)">
-            <h4>Чи можу я замовити послугу на вихідні?</h4>
-        </div>
-        <div class="answer">
-            <p>Так, ми працюємо щодня, включаючи вихідні.</p>
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-dark-800 relative">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider">
+                    Регламентні роботи
+                </div>
+                <h2 class="text-3xl md:text-5xl font-display font-extrabold text-white">
+                    Наші Послуги & Комплексні Рішення
+                </h2>
+                <p class="text-slate-400 text-base md:text-lg">
+                    Використовуємо лише сертифіковані матеріали преміум-сегменту без абразивів низької якості.
+                </p>
+            </div>
+
+            <!-- 3 Modern Service Cards with DISTINCT verified 200 OK images -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Service 1: Exterior Polishing -->
+                <div class="glass-panel rounded-3xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1.5 transition-all duration-300">
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img 
+                                src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?auto=format&fit=crop&w=800&q=80" 
+                                alt="Детейлінг екстер'єру та відновлювальне полірування Київ" 
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-dark-800 via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-dark-900/80 backdrop-blur-md border border-white/10 text-white text-xs font-bold px-3 py-1 rounded-xl">
+                                4–6 годин
+                            </span>
+                        </div>
+                        <div class="p-6 md:p-7 space-y-4">
+                            <h3 class="text-2xl font-display font-bold text-white group-hover:text-blue-400 transition-colors">
+                                Детейлінг-полірування
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Багатоетапне відновлення ЛФП. Усуваємо до 95% павутинки, голограм, подряпин від гілок та мийок без стоншення рідного лаку.
+                            </p>
+                            <ul class="space-y-2.5 text-sm text-slate-300 pt-2 border-t border-white/5">
+                                <li class="flex items-center gap-2.5">
+                                    <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                                    <span>Трифазна делікатна мийка Koch Chemie</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                                    <span>Очищення кузова від бітуму та колодкового пилу</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                                    <span>Фінішний твердий віск у подарунок</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-7 pt-0 border-t border-white/5 flex items-center justify-between mt-4">
+                        <div>
+                            <span class="text-xs text-slate-400 block">Вартість</span>
+                            <span class="text-2xl font-display font-extrabold text-white">від 2 500 ₴</span>
+                        </div>
+                        <a href="https://t.me/pavlograd_admin?text=Цікавить%20детейлінг-полірування%20авто" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white/10 hover:bg-blue-600 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition-all">
+                            <span>Замовити</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 2: Ceramic 9H & Film (FEATURED) -->
+                <div class="glass-panel rounded-3xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1.5 transition-all duration-300 relative border-blue-500/40 shadow-2xl shadow-blue-500/10">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 z-10 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-extrabold px-4 py-1 rounded-full uppercase tracking-wider shadow-lg">
+                        Вибір клієнтів №1
+                    </div>
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img 
+                                src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80" 
+                                alt="Нанокерамічний захист 9H Ceramic Pro Київ" 
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-dark-800 via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-xl">
+                                12–24 години
+                            </span>
+                        </div>
+                        <div class="p-6 md:p-7 space-y-4">
+                            <h3 class="text-2xl font-display font-bold text-white group-hover:text-blue-400 transition-colors">
+                                Нанокераміка 9H & Плівка
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Максимальний гідрофобний ефект «мокрого скла», захист від вигорання на сонці, пташиного посліду, дорожніх реагентів та смоли.
+                            </p>
+                            <ul class="space-y-2.5 text-sm text-slate-300 pt-2 border-t border-white/5">
+                                <li class="flex items-center gap-2.5">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-blue-400 shrink-0"></i>
+                                    <span>2 шари нанокераміки 9H + гідрофобний топ</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-blue-400 shrink-0"></i>
+                                    <span>Антидощ на все скло в подарунок</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-blue-400 shrink-0"></i>
+                                    <span>Офіційний гарантійний сертифікат на 2 роки</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-7 pt-0 border-t border-white/5 flex items-center justify-between mt-4">
+                        <div>
+                            <span class="text-xs text-blue-400 font-semibold block">Хіт продажів</span>
+                            <span class="text-2xl font-display font-extrabold text-white">від 4 800 ₴</span>
+                        </div>
+                        <a href="https://t.me/pavlograd_admin?text=Цікавить%20керамічний%20захист%209H" target="_blank" rel="noopener noreferrer" class="glow-button inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition-all">
+                            <span>Замовити 9H</span>
+                            <i data-lucide="shield" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 3: Interior Detailing -->
+                <div class="glass-panel rounded-3xl overflow-hidden flex flex-col justify-between group hover:-translate-y-1.5 transition-all duration-300">
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img 
+                                src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=80" 
+                                alt="Глибока хімчистка та реставрація шкіри Київ" 
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                loading="lazy"
+                            >
+                            <div class="absolute inset-0 bg-gradient-to-t from-dark-800 via-transparent to-transparent"></div>
+                            <span class="absolute top-4 left-4 bg-dark-900/80 backdrop-blur-md border border-white/10 text-white text-xs font-bold px-3 py-1 rounded-xl">
+                                6–8 годин
+                            </span>
+                        </div>
+                        <div class="p-6 md:p-7 space-y-4">
+                            <h3 class="text-2xl font-display font-bold text-white group-hover:text-blue-400 transition-colors">
+                                Глибока хімчистка салону
+                            </h3>
+                            <p class="text-slate-300 text-sm leading-relaxed">
+                                Повне делікатне очищення парогенератором і торнадором без заливання електроніки. Видалення складних плям, озонування та живлення шкіри.
+                            </p>
+                            <ul class="space-y-2.5 text-sm text-slate-300 pt-2 border-t border-white/5">
+                                <li class="flex items-center gap-2.5">
+                                    <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                                    <span>Гіпоалергенна безпечна хімія без різкого запаху</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                                    <span>Консервація шкіри та пластику від ультрафіолету</span>
+                                </li>
+                                <li class="flex items-center gap-2.5">
+                                    <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                                    <span>Антибактеріальне озонування клімату</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-7 pt-0 border-t border-white/5 flex items-center justify-between mt-4">
+                        <div>
+                            <span class="text-xs text-slate-400 block">Вартість</span>
+                            <span class="text-2xl font-display font-extrabold text-white">від 3 200 ₴</span>
+                        </div>
+                        <a href="https://t.me/pavlograd_admin?text=Цікавить%20глибока%20хімчистка%20салону" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white/10 hover:bg-blue-600 text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition-all">
+                            <span>Замовити</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
-    <section class="contact">
-        <div class="address">Київ, вул. Велика Васильківська, 102</div>
-        <div class="hours">Пн–Нд 08:30 – 21:00</div>
-        <a href="https://t.me/pavlograd_admin" class="telegram-btn">Зв'язатись з менеджером</a>
+    <!-- Pricing Comparison Section -->
+    <section id="pricing" class="py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                    Чесні та фіксовані ціни
+                </div>
+                <h2 class="text-3xl md:text-5xl font-display font-extrabold text-white">
+                    Пакетні Тарифи Під Будь-яку Задачу
+                </h2>
+                <p class="text-slate-400 text-base md:text-lg">
+                    Ніяких прихованих доплат: вартість затверджується до початку робіт і не змінюється.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                
+                <!-- Tier 1: Light Fresh -->
+                <div class="glass-panel p-8 rounded-3xl flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Підтримуючий</span>
+                            <h3 class="text-2xl font-display font-bold text-white mt-1">Light Fresh</h3>
+                            <p class="text-slate-400 text-sm mt-2">Ідеально для підтримки чистоти перед продажем чи важливою подією.</p>
+                        </div>
+                        <div class="py-4 border-y border-white/10">
+                            <span class="text-3xl font-display font-extrabold text-white">1 800 ₴</span>
+                            <span class="text-xs text-slate-400"> / за седан</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-slate-300">
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Двофазна мийка преміум-шампунем</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Очищення дисків від феродо-пилу</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Сухе прибирання салону та багажника</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Покриття шин гідрофобним чорнінням</li>
+                        </ul>
+                    </div>
+                    <a href="https://t.me/pavlograd_admin?text=Замовлення%20тарифу%20Light%20Fresh%20(1800%20грн)" target="_blank" rel="noopener noreferrer" class="mt-8 w-full text-center py-3.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-all">
+                        Обрати Light Fresh
+                    </a>
+                </div>
+
+                <!-- Tier 2: Total Pro (Featured) -->
+                <div class="glass-panel p-8 rounded-3xl flex flex-col justify-between border-blue-500 bg-gradient-to-b from-blue-950/20 to-dark-800 relative shadow-2xl">
+                    <div class="absolute -top-3 right-6 bg-emerald-500 text-dark-900 font-extrabold text-xs px-3 py-1 rounded-full uppercase tracking-wider">
+                        Повний комплекс
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-blue-400">Оптимальний вибір</span>
+                            <h3 class="text-2xl font-display font-bold text-white mt-1">Total Pro Detailing</h3>
+                            <p class="text-slate-300 text-sm mt-2">Повне оновлення: кузов, диски, підкапотний простір і салон.</p>
+                        </div>
+                        <div class="py-4 border-y border-white/10">
+                            <span class="text-4xl font-display font-extrabold text-white">4 800 ₴</span>
+                            <span class="text-xs text-slate-400"> / повний цикл</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-slate-200">
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-blue-400"></i> Відновлювальне полірування кузова</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-blue-400"></i> Нанесення рідкого скла / сіланту</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-blue-400"></i> Глибока хімчистка з консервацією шкіри</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-blue-400"></i> Очищення та делікатна мийка підкапотки</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check-circle" class="w-4 h-4 text-blue-400"></i> Антидощ на передню півсферу</li>
+                        </ul>
+                    </div>
+                    <a href="https://t.me/pavlograd_admin?text=Замовлення%20тарифу%20Total%20Pro%20(4800%20грн)" target="_blank" rel="noopener noreferrer" class="glow-button mt-8 w-full text-center py-4 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-lg">
+                        Замовити Total Pro
+                    </a>
+                </div>
+
+                <!-- Tier 3: Armor Collector -->
+                <div class="glass-panel p-8 rounded-3xl flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Преміум-броня</span>
+                            <h3 class="text-2xl font-display font-bold text-white mt-1">Armor Collector 9H</h3>
+                            <p class="text-slate-400 text-sm mt-2">Абсолютний захист для преміальних, нових та рідкісних авто.</p>
+                        </div>
+                        <div class="py-4 border-y border-white/10">
+                            <span class="text-3xl font-display font-extrabold text-white">9 500 ₴</span>
+                            <span class="text-xs text-slate-400"> / з гарантією 2 роки</span>
+                        </div>
+                        <ul class="space-y-3 text-sm text-slate-300">
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> 2 шари нанокераміки 9H Ceramic Pro</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Бронювання оптики та зон під ручками</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Керамічний термозахист колісних дисків</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Повне озонування та паспорт гарантії</li>
+                        </ul>
+                    </div>
+                    <a href="https://t.me/pavlograd_admin?text=Замовлення%20тарифу%20Armor%20Collector%20(9500%20грн)" target="_blank" rel="noopener noreferrer" class="mt-8 w-full text-center py-3.5 px-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-all">
+                        Обрати Armor 9H
+                    </a>
+                </div>
+
+            </div>
+        </div>
     </section>
 
-    <footer>
-        <p>Копірайт 2026, безпека даних, всі права захищено.</p>
+    <!-- 4-Step Process Section -->
+    <section id="process" class="py-24 bg-dark-800 relative">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="text-center max-w-2xl mx-auto space-y-4 mb-16">
+                <span class="text-blue-400 font-bold text-xs uppercase tracking-wider">Прозорість та надійність</span>
+                <h2 class="text-3xl md:text-5xl font-display font-extrabold text-white">Як Ми Працюємо</h2>
+                <p class="text-slate-400">Всього 4 кроки від вашого повідомлення до ідеального дзеркала на кузові.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-panel p-6 rounded-2xl relative">
+                    <span class="text-5xl font-display font-black text-blue-500/20 absolute top-4 right-4">01</span>
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-4">
+                        <i data-lucide="message-square" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">Заявка та бриф</h4>
+                    <p class="text-sm text-slate-400">Пишете нам у Telegram, надсилаєте фото або марку авто — отримуєте точний прорахунок за 5 хвилин.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl relative">
+                    <span class="text-5xl font-display font-black text-blue-500/20 absolute top-4 right-4">02</span>
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-4">
+                        <i data-lucide="clipboard-check" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">Огляд товщиноміром</h4>
+                    <p class="text-sm text-slate-400">Вимірюємо товщину лаку ультразвуковим датчиком. Виключаємо ризик пропалу рідного покриття.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl relative">
+                    <span class="text-5xl font-display font-black text-blue-500/20 absolute top-4 right-4">03</span>
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-4">
+                        <i data-lucide="sparkle" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">Студійна обробка</h4>
+                    <p class="text-sm text-slate-400">Робота в чистій кімнаті з контролем вологості та температури за технологічними картами Rupes і Koch.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl relative">
+                    <span class="text-5xl font-display font-black text-blue-500/20 absolute top-4 right-4">04</span>
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-4">
+                        <i data-lucide="badge-check" class="w-5 h-5"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-white mb-2">Контроль та оплата</h4>
+                    <p class="text-sm text-slate-400">Оглядаєте авто під студійним софітним світлом. Оплата лише після вашого 100% схвалення результату.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee & Trust Banner -->
+    <section id="guarantee" class="py-20 relative">
+        <div class="max-w-5xl mx-auto px-4 md:px-8">
+            <div class="glass-panel p-8 md:p-12 rounded-3xl border border-emerald-500/30 bg-gradient-to-r from-emerald-950/20 via-dark-800 to-blue-950/20 text-center space-y-6 relative overflow-hidden">
+                <div class="inline-flex p-3 rounded-2xl bg-emerald-500/10 text-emerald-400 mx-auto">
+                    <i data-lucide="shield-alert" class="w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl md:text-4xl font-display font-bold text-white">
+                    Залізна гарантія результату за договором
+                </h3>
+                <p class="text-slate-300 max-w-2xl mx-auto text-base md:text-lg">
+                    Якщо після завершення робіт ви помітите хоча б одну неочищену деталь чи голограму — ми усуваємо це за наш рахунок протягом 24 годин або повертаємо кошти.
+                </p>
+                <div class="pt-4 flex flex-wrap justify-center gap-6 text-sm font-semibold text-slate-300">
+                    <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Офіційний фіскальний чек</span>
+                    <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Безготівковий розрахунок для юросіб</span>
+                    <span class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> Гарантійний талон 9H</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive FAQ Section -->
+    <section id="faq" class="py-24 bg-dark-800 relative">
+        <div class="max-w-4xl mx-auto px-4 md:px-8">
+            <div class="text-center space-y-4 mb-16">
+                <span class="text-blue-400 font-bold text-xs uppercase tracking-wider">Відповіді на запитання</span>
+                <h2 class="text-3xl md:text-5xl font-display font-extrabold text-white">Часті Запитання (FAQ)</h2>
+                <p class="text-slate-400">Все, що потрібно знати перед тим, як довірити нам свій автомобіль.</p>
+            </div>
+
+            <div class="space-y-4" id="faq-container">
+                
+                <!-- FAQ Item 1 -->
+                <div class="glass-panel rounded-2xl overflow-hidden border border-white/10 transition-all">
+                    <button class="faq-toggle w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-white hover:text-blue-400 text-lg transition-colors" aria-expanded="false">
+                        <span>Що входить у базовий огляд та діагностику ЛФП?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transform transition-transform duration-300 shrink-0"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-slate-300 text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Огляд включає повний замір товщини заводського лаку товщиноміром по 24 контрольних точках кузова, перевірку на наявність глибоких сколів, дефектування пластикових елементів та складання карти рекомендацій для полірування.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="glass-panel rounded-2xl overflow-hidden border border-white/10 transition-all">
+                    <button class="faq-toggle w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-white hover:text-blue-400 text-lg transition-colors" aria-expanded="false">
+                        <span>Скільки реально тримається нанокерамічне покриття 9H?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transform transition-transform duration-300 shrink-0"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-slate-300 text-sm leading-relaxed border-t border-white/5 pt-4">
+                        При правильному догляді та двофазній мийці керамічний склад служить від 18 до 24 місяців (або 40 000 км пробігу). Раз на 6 місяців ми рекомендуємо заїжджати на безкоштовний огляд та оновлення гідрофобного шару.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="glass-panel rounded-2xl overflow-hidden border border-white/10 transition-all">
+                    <button class="faq-toggle w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-white hover:text-blue-400 text-lg transition-colors" aria-expanded="false">
+                        <span>Як швидко можна забрати автомобіль після хімчистки?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transform transition-transform duration-300 shrink-0"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-slate-300 text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Завдяки професійним турбосушаркам салон автомобіля висихає повністю за 2–3 години після обробки. Ви забираєте 100% сухий автомобіль без запаху вогкості чи парникового ефекту.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="glass-panel rounded-2xl overflow-hidden border border-white/10 transition-all">
+                    <button class="faq-toggle w-full p-6 text-left flex items-center justify-between gap-4 font-bold text-white hover:text-blue-400 text-lg transition-colors" aria-expanded="false">
+                        <span>Чи можна оплатити безготівково за рахунком ФОП / ТОВ?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transform transition-transform duration-300 shrink-0"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-6 text-slate-300 text-sm leading-relaxed border-t border-white/5 pt-4">
+                        Так, ми офіційно працюємо як з фізичними особами (картка, термінал, готівка, Apple/Google Pay), так і з юридичними особами з наданням повного пакета актів виконаних робіт.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 bg-dark-900 py-12 text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <span class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white">
+                    <i data-lucide="shield" class="w-4 h-4"></i>
+                </span>
+                <span class="font-display font-bold text-white text-lg">APEX DETAILING KYIV</span>
+            </div>
+
+            <div class="flex items-center gap-6">
+                <a href="tel:+380671234567" class="hover:text-white transition-colors">📞 +38 (067) 123-45-67</a>
+                <a href="https://t.me/pavlograd_admin" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition-colors">💬 @pavlograd_admin</a>
+                <span>Київ, вул. Велика Васильківська, 102</span>
+            </div>
+
+            <div class="text-xs text-slate-500">
+                © 2026 APEX Kyiv Studio. Всі права захищено. Безпека даних гарантована.
+            </div>
+        </div>
     </footer>
 
+    <!-- Interactive Scripts -->
     <script>
-        function toggleAnswer(element) {
-            const answer = element.nextElementSibling;
-            if (answer.style.display === 'block') {
-                answer
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // FAQ accordion logic
+        document.querySelectorAll('.faq-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+                // Close other opened items
+                document.querySelectorAll('.faq-content').forEach(c => {
+                    if (c !== content) c.classList.add('hidden');
+                });
+                document.querySelectorAll('.faq-toggle').forEach(b => {
+                    if (b !== button) {
+                        b.setAttribute('aria-expanded', 'false');
+                        const otherIcon = b.querySelector('i');
+                        if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+                    }
+                });
+
+                if (isExpanded) {
+                    content.classList.add('hidden');
+                    button.setAttribute('aria-expanded', 'false');
+                    if (icon) icon.style.transform = 'rotate(0deg)';
+                } else {
+                    content.classList.remove('hidden');
+                    button.setAttribute('aria-expanded', 'true');
+                    if (icon) icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
