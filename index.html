@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Преміальний детейлінг та захист авто Київ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #090a0f;
+            color: #f1f5f9;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-[#090a0f] text-[#f1f5f9]">
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col justify-center items-center text-center">
+        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=85" alt="Преміальний детейлінг" class="w-full h-auto rounded-3xl mb-8">
+        <h1 class="text-4xl font-bold mb-4">Преміальний детейлінг та захист авто</h1>
+        <p class="text-xl mb-6">Київ, Поділ / Оболонь / Печерськ</p>
+        <a href="tel:+380XXXXXXXXX" class="bg-emerald-500 hover:bg-emerald-400 text-black font-bold py-3 px-8 rounded-3xl">Швидкий виклик</a>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-semibold mb-10 text-center">Наші Послуги</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-[#11131a] border border-white/10 hover:border-emerald-500/40 transition-all rounded-3xl p-6">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Детейлінг" class="rounded-3xl mb-4">
+                    <h3 class="text-2xl font-bold mb-2">Базовий огляд</h3>
+                    <p class="mb-4">Діагностика за 15 хв</p>
+                    <p class="font-bold">1 500 ₴</p>
+                </div>
+                <div class="bg-[#11131a] border border-white/10 hover:border-emerald-500/40 transition-all rounded-3xl p-6">
+                    <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80" alt="Захист авто" class="rounded-3xl mb-4">
+                    <h3 class="text-2xl font-bold mb-2">Комплексний захист</h3>
+                    <p class="mb-4">Запуск під ключ за 24 години</p>
+                    <p class="font-bold">3 800 ₴</p>
+                </div>
+                <div class="bg-[#11131a] border border-white/10 hover:border-emerald-500/40 transition-all rounded-3xl p-6">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Детейлінг" class="rounded-3xl mb-4">
+                    <h3 class="text-2xl font-bold mb-2">Преміальний догляд</h3>
+                    <p class="mb-4">Приїзд майстра за 40 хвилин</p>
+                    <p class="font-bold">2 500 ₴</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-[#11131a]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-semibold mb-10 text-center">Часті Запитання</h2>
+            <div id="faq" class="space-y-4">
+                <div class="border-b border-white/10 pb-4">
+                    <button class="w-full text-left text-xl font-medium" onclick="toggleFaq(1)">Що входить у базовий огляд?</button>
+                    <div id="faq1" class="hidden mt-2">
+                        <p>Базовий огляд включає в себе повну діагностику авто з рекомендаціями щодо подальших дій.</p>
+                    </div>
+                </div>
+                <div class="border-b border-white/10 pb-4">
+                    <button class="w-full text-left text-xl font-medium" onclick="toggleFaq(2)">Як швидко ми можемо приїхати?</button>
+                    <div id="faq2" class="hidden mt-2">
+                        <p>Наш майстер приїде до вас за 40 хвилин після оформлення заявки.</p>
+                    </div>
+                </div>
+                <div class="border-b border-white/10 pb-4">
+                    <button class="w-full text-left text-xl font-medium" onclick="toggleFaq(3)">Які гарантії ви надаєте?</button>
+                    <div id="faq3" class="hidden mt-2">
+                        <p>Ми надаємо чіткі гарантії з підписом у договорі, щоб ви були впевнені у якості наших послуг.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-semibold mb-10">Зв'яжіться з нами</h2>
+            <a href="https://t.me/pavlograd_admin" class="bg-emerald-500 hover:bg-emerald-400 text-black font-bold py-3 px-8 rounded-3xl">Замовити через Telegram</a>
+        </div>
+    </section>
+
+    <script>
+        function toggleFaq(id) {
+            const faq = document.getElementById('faq' + id);
+            faq.classList.toggle('hidden');
+        }
+    </script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
